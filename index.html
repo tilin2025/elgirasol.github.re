@@ -3,223 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Día de las flores amarillas — para una hermosa persona</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <title>Flores Amarillas para alguien especial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg1: #fffaf0;
       --bg2: #fff6d6;
       --accent: #f2c94c;
-      --accent-dark: #e5b233;
+      --accent-dark: #d4a41c;
       --text: #2b2b2b;
       --muted: #6b6b6b;
-      --pink: #f7a9c4;
+      --pink: #f47c96;
     }
-    *{box-sizing:border-box}
     body{
-      margin:0; min-height:100vh; font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,var(--bg1),var(--bg2)); color:var(--text);
-      display:flex; align-items:center; justify-content:center; padding:28px;
+      margin:0; padding:28px; min-height:100vh;
+      font-family:'Montserrat', sans-serif;
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text);
     }
     .card{
-      width:100%; max-width:980px; background:rgba(255,255,255,0.85); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      overflow:hidden; display:grid; grid-template-columns: 1fr 420px; gap:0; align-items:stretch;
+      max-width:800px; width:100%;
+      background:rgba(255,255,255,0.9);
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      padding:40px;
+      text-align:center;
     }
-    .left{padding:48px 40px}
-    .right{background:linear-gradient(180deg,#fffef9,#fff3c4); padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center}
-    h1{font-family:'Playfair Display', serif; font-size:36px; margin:0 0 10px; color:var(--accent-dark)}
-    h2{margin:0; font-weight:500; color:var(--muted)}
-    p.lead{margin-top:18px; line-height:1.5; font-size:16px}
-
-    .flowers{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-    .flower{width:64px; height:64px; display:inline-grid; place-items:center}
-
-    .cta{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap}
-    .btn{padding:12px 18px; border-radius:12px; border:0; cursor:pointer; font-weight:600; transition:transform .2s}
+    h1{
+      font-family:'Playfair Display', serif;
+      font-size:2.2em;
+      color:var(--accent-dark);
+      margin-bottom:10px;
+    }
+    h2{font-weight:400; color:var(--muted); margin-top:0}
+    p{line-height:1.6; font-size:1.1em}
+    .btn{
+      margin-top:25px;
+      padding:12px 22px;
+      border:none; border-radius:12px;
+      font-size:1em; font-weight:600;
+      cursor:pointer;
+      background:var(--pink); color:#fff;
+      transition:transform .2s;
+    }
     .btn:hover{transform:scale(1.05)}
-    .btn-primary{background:var(--accent); color:#2b2b2b}
-    .btn-ghost{background:transparent; color:var(--accent-dark); border:2px solid rgba(0,0,0,0.04)}
-    .btn-heart{background:var(--pink); color:#fff}
-
-    .note{margin-top:16px; font-size:13px; color:var(--muted)}
-
-    .right .bigflower{width:220px; height:220px}
-
-    footer{padding:16px; text-align:center; font-size:13px; color:var(--muted)}
-
-    @media (max-width:880px){
-      .card{grid-template-columns:1fr;}
-      .right{order:-1}
+    footer{margin-top:28px; font-size:0.85em; color:var(--muted)}
+    /* corazones animados */
+    .heart{
+      position:fixed; bottom:0;
+      font-size:20px;
+      animation:fly 4s linear forwards;
     }
-
-    .flower svg{transform-origin:center; animation:floaty 6s ease-in-out infinite}
-    .flower:nth-child(2) svg{animation-delay:0.6s}
-    .flower:nth-child(3) svg{animation-delay:1.2s}
-    @keyframes floaty{0%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(6deg)}100%{transform:translateY(0) rotate(-2deg)}}
-
-    #confetti{position:fixed; left:0; top:0; width:100%; height:100%; pointer-events:none}
-
-    /* nueva sección de citas */
-    .quotes{margin-top:40px; padding:20px; background:rgba(255,255,255,0.6); border-left:4px solid var(--accent); border-radius:12px;}
-    .quotes p{margin:0 0 10px; font-style:italic; font-size:15px;}
-    .quotes p:last-child{margin:0}
-
-    /* animación de corazones flotantes */
-    .heart{position:fixed; font-size:20px; animation:fly 4s linear forwards;}
-    @keyframes fly{0%{opacity:1; transform:translateY(0) scale(1);}100%{opacity:0; transform:translateY(-200px) scale(1.8);}}
+    @keyframes fly{
+      0%{opacity:1; transform:translateY(0) scale(1);}
+      100%{opacity:0; transform:translateY(-200px) scale(1.8);}
+    }
   </style>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
-  <div class="card" role="main" aria-labelledby="title">
-    <section class="left">
-      <h1 id="title">Feliz Día de las Flores Amarillas</h1>
-      <h2>Para una hermosa persona</h2>
-      <p class="lead">Hoy las flores se visten de amarillo para recordarte lo brillante, cálida y especial que eres. Que cada pétalo traiga una sonrisa y que este pequeño detalle ilumine tu día.</p>
+  <div class="card">
+    <h1>🌼 Feliz Día de las Flores Amarillas 🌼</h1>
+    <h2>Para una persona muy linda y especial</h2>
+    <p>Hoy quiero regalarte este detalle con mucho cariño. 
+       Así como estas flores iluminan el día con su color, 
+       tú iluminas mi vida con tu presencia. 💛</p>
+    <p>Que cada pétalo represente alegría, esperanza y todo 
+       lo bonito que deseo para ti. ✨</p>
 
-      <div class="flowers" aria-hidden="true">
-        <!-- flores existentes -->
-        <div class="flower" title="flores amarillas">
-          <svg viewBox="0 0 100 100" width="64" height="64" aria-hidden="true">
-            <g>
-              <circle cx="50" cy="50" r="10" fill="#F9E19A"/>
-              <path d="M50 10 C58 26, 72 26, 70 40 C72 56, 58 60, 50 50 C42 60, 28 56, 30 40 C28 26,42 26,50 10Z" fill="#F2C94C" transform="translate(0,0)"/>
-            </g>
-          </svg>
-        </div>
-        <div class="flower" title="flores amarillas">
-          <svg viewBox="0 0 100 100" width="64" height="64" aria-hidden="true">
-            <g>
-              <circle cx="50" cy="50" r="10" fill="#FFD97A"/>
-              <g fill="#F2C94C">
-                <ellipse cx="50" cy="22" rx="12" ry="18" />
-                <ellipse cx="78" cy="50" rx="12" ry="18" transform="rotate(90 78 50)"/>
-                <ellipse cx="50" cy="78" rx="12" ry="18" />
-                <ellipse cx="22" cy="50" rx="12" ry="18" transform="rotate(90 22 50)"/>
-              </g>
-            </g>
-          </svg>
-        </div>
-        <div class="flower" title="flores amarillas">
-          <svg viewBox="0 0 100 100" width="64" height="64" aria-hidden="true">
-            <g>
-              <circle cx="50" cy="50" r="10" fill="#FFE9AA"/>
-              <path d="M50 6 C62 18,78 22,78 38 C78 54,64 64,50 54 C36 64,22 54,22 38 C22 22,38 18,50 6Z" fill="#F2C94C"/>
-            </g>
-          </svg>
-        </div>
-      </div>
+    <button class="btn" id="btn-hearts">Haz clic y recibe una lluvia de corazones ❤️</button>
 
-      <div class="cta">
-        <button class="btn btn-primary" id="btn-bless">Enviar buenos deseos ✨</button>
-        <button class="btn btn-ghost" id="btn-download">Descargar página</button>
-        <button class="btn btn-heart" id="btn-hearts">Enviar corazones ❤️</button>
-      </div>
-      <p class="note">Haz clic en los botones para descubrir sorpresas interactivas. También puedes descargar este archivo y abrirlo en tu navegador para compartirlo.</p>
-
-      <div class="quotes">
-        <p>🌼 "Las flores amarillas son la sonrisa del sol hecha pétalo."</p>
-        <p>💛 "Que cada día sea tan brillante como estas flores que hoy celebramos."</p>
-        <p>✨ "Eres la razón por la que el amarillo se ve más bonito."</p>
-      </div>
-    </section>
-
-    <aside class="right" aria-label="Decoración">
-      <svg class="bigflower" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <radialGradient id="g" cx="50%" cy="35%">
-            <stop offset="0%" stop-color="#fff7db"/>
-            <stop offset="100%" stop-color="#f4d97a"/>
-          </radialGradient>
-        </defs>
-        <rect width="240" height="240" rx="18" fill="url(#g)"/>
-        <g transform="translate(120,120)">
-          <circle r="20" fill="#F9E19A"/>
-          <g fill="#F2C94C" transform="rotate(0)">
-            <ellipse rx="20" ry="44" transform="rotate(0) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(45) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(90) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(135) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(180) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(225) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(270) translate(0,-64)"/>
-            <ellipse rx="20" ry="44" transform="rotate(315) translate(0,-64)"/>
-          </g>
-        </g>
-      </svg>
-      <div style="text-align:center; margin-top:18px">
-        <strong style="display:block; font-size:18px;">Un abrazo con pétalos</strong>
-        <span style="font-size:13px; color:var(--muted);">Que hoy y siempre recibas luz y cariño.</span>
-      </div>
-    </aside>
+    <footer>Con todo mi aprecio • <span id="year"></span></footer>
   </div>
-
-  <footer>Hecho con cariño • <span id="year"></span></footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    (function(){
-      const canvas = document.getElementById('confetti');
-      const ctx = canvas.getContext('2d');
-      let W = canvas.width = innerWidth;
-      let H = canvas.height = innerHeight;
-      const pieces = [];
-      function rand(min,max){return Math.random()*(max-min)+min}
-      function Piece(){
-        this.x = rand(0,W); this.y = rand(-H,0); this.size = rand(6,12); this.speed = rand(1,4); this.tilt = rand(-10,10); this.color = ['#F2C94C','#FFD97A','#FFF2C4'][Math.floor(rand(0,3))]
+    const btnHearts = document.getElementById('btn-hearts');
+    btnHearts.addEventListener('click', ()=>{
+      for(let i=0;i<20;i++){
+        const heart=document.createElement('div');
+        heart.className='heart';
+        heart.textContent='❤️';
+        heart.style.left=Math.random()*100+'%';
+        heart.style.fontSize=(Math.random()*20+16)+'px';
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
       }
-      for(let i=0;i<120;i++) pieces.push(new Piece());
-      function resize(){W=canvas.width=innerWidth; H=canvas.height=innerHeight}
-      addEventListener('resize', resize);
-      function draw(){ctx.clearRect(0,0,W,H); for(let p of pieces){
-        p.y += p.speed; p.x += Math.sin(p.y/20); p.tilt += 0.1;
-        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.tilt*0.02);
-        ctx.fillStyle = p.color; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6);
-        ctx.restore();
-        if(p.y>H+20){p.y = rand(-100, -10); p.x = rand(0,W)}
-      }}
-      let confettiInterval = setInterval(draw, 28);
-
-      document.addEventListener('visibilitychange', ()=>{
-        if(document.hidden) clearInterval(confettiInterval);
-        else confettiInterval = setInterval(draw, 28);
-      });
-
-      const btn = document.getElementById('btn-bless');
-      btn.addEventListener('click', ()=>{
-        const original = btn.textContent;
-        btn.textContent = '✨ Enviado ✨';
-        btn.disabled = true;
-        setTimeout(()=>{btn.textContent = original; btn.disabled = false}, 2500);
-        const big = document.querySelector('.bigflower');
-        big.animate([{transform:'scale(1)'},{transform:'scale(1.05)'},{transform:'scale(1)'}], {duration:700, easing:'ease-out'});
-      });
-
-      document.getElementById('btn-download').addEventListener('click', ()=>{
-        const html = '<!doctype html>\n' + document.documentElement.outerHTML;
-        const blob = new Blob([html], {type:'text/html'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'Día-de-las-flores-amarillas.html';
-        document.body.appendChild(a); a.click(); a.remove();
-        URL.revokeObjectURL(url);
-      });
-
-      // botón de corazones
-      document.getElementById('btn-hearts').addEventListener('click', ()=>{
-        for(let i=0;i<15;i++){
-          const heart=document.createElement('div');
-          heart.className='heart';
-          heart.textContent='❤️';
-          heart.style.left=Math.random()*100+'%';
-          heart.style.bottom='0px';
-          heart.style.fontSize=(Math.random()*20+16)+'px';
-          document.body.appendChild(heart);
-          setTimeout(()=>heart.remove(),4000);
-        }
-      });
-    })();
+    });
   </script>
 </body>
 </html>
